@@ -1,5 +1,10 @@
 package project5;
 
+/**
+ * 
+ * @author tomasg
+ *
+ */
 public class State {
 
     private String name;
