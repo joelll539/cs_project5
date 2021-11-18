@@ -1,5 +1,14 @@
 package project5;
 
+/**
+ * 
+ * @author Akshath Majumder
+ * @author Joel
+ * @author Tomas
+ * @version 11.17.2021
+ *
+ * @param <T>
+ */
 public class Node<T> {
     private T data;
     private Node<T> a;
