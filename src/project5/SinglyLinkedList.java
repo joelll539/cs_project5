@@ -9,6 +9,10 @@ public class SinglyLinkedList<T> implements Iterable<T> {
         this.head = head;
     }
     
+    public SinglyLinkedList() {
+        head = null;
+    }
+    
     public Node<T> getHead() {
         return head;
     }
