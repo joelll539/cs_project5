@@ -59,25 +59,13 @@ public class SinglyLinkedList<T> implements Iterable<T> {
         sb.append("[");
         Node<T> curr = head;
         
-        while (curr != null) {
-            sb.append(curr.getData().toString());
-            
-            if (curr.getNextNode() != null) {
-                sb.append(", ");
-            }
-            curr = curr.getNextNode();
+        for (T i : this) {
+            sb.append(i.toString());
+            sb.append(", ");
         }
+        sb.deleteCharAt(sb.length() - 1);
+        sb.deleteCharAt(sb.length() - 1);
         
-        /**
-        while (iter.hasNext()) {
-            sb.append(iter.next().toString());
-            
-            if (iter.hasNext()) {
-                sb.append(", ");
-            }
-        }
-        
-        */
         sb.append("]");
         return sb.toString();
     }
@@ -96,7 +84,7 @@ public class SinglyLinkedList<T> implements Iterable<T> {
                 return false;
             }
             
-            return curr.getNextNode() != null;
+            return true;
         }
 
         @Override

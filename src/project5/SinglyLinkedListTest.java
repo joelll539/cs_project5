@@ -10,10 +10,7 @@ public class SinglyLinkedListTest extends TestCase {
     
     public void testAppendFirst() {
         list.appendFirst(1 + "");
-        Node<Integer> someNode = new Node<Integer>(1);
-        assertNull(someNode.getNextNode());
-        someNode = someNode.getNextNode();
-        assertNull(someNode);
+        list.appendFirst(2 + "");
         System.out.println(list.toString());
     }
 }
