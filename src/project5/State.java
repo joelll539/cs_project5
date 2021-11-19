@@ -8,7 +8,7 @@ package project5;
 public class State {
 
     private String name;
-    private LinkedList<Integer> stats;
+    private SinglyLinkedList<Race> races;
 
     /**
      * Constructor initializes fields from inputs for class
@@ -18,17 +18,17 @@ public class State {
      * @param stat
      *            list for state statistics
      */
-    public State(String n, LinkedList<Integer> stat) {
+    public State(String n, SinglyLinkedList<Race> race) {
         name = n;
-        stats = stat;
+        races = race;
     }
     
     /**
      * 
      * @return
      */
-    public LinkedList<Integer> getStats() {
-        
+    public SinglyLinkedList<Race> getRaces() {
+        return races;
     }
     
     /**
@@ -36,15 +36,7 @@ public class State {
      * @return
      */
     public String getName() {
-        
-    }
-    
-    /**
-     * 
-     * @return
-     */
-    private LinkedList<Integer> calcStats() {
-        
+        return name;
     }
     
     /**
@@ -52,7 +44,9 @@ public class State {
      * @return
      */
     public String toString() {
-        
+        StringBuilder nameString = new StringBuilder();
+        nameString.append(name);
+        return nameString.toString();        
     }
 
 }
