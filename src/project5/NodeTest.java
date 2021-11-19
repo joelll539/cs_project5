@@ -1,12 +1,12 @@
 package project5;
-
+import student.TestCase;
 /**
  * 
  * @author Akshath Majumder
  * @version 11.17.2021
  *
  */
-public class NodeTest extends student.TestCase {
+public class NodeTest extends TestCase {
     private Node<String> nodeaks;
     private Node<String> nodebobby;
     private Node<String> nodekkr;
@@ -46,7 +46,7 @@ public class NodeTest extends student.TestCase {
      * Tests the get data method
      */
     public void testgetData() {
-        nodeaks.getData("aks");
+        nodeaks.getData();
 
     }
 
