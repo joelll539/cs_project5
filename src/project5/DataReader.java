@@ -30,6 +30,8 @@ public class DataReader {
         raceInfo = scanner.nextLine().split(",");
         State newState;
 
+        //Gets the index of the first death statistic
+        //Also gets the names of the races
         for (int i = 1; i < raceInfo.length; i++) {
             if (raceInfo[i].contains("Deaths")) {
                 firstDeathStat = i;
@@ -37,17 +39,18 @@ public class DataReader {
             }
             raceNames.add(raceInfo[i].substring(6));
         }
+        System.out.println(raceNames.toString());
         
+        //Goes through the lines to make string arrays
         while (scanner.hasNextLine()) {
             strings = scanner.nextLine().split(",");
-            //newState = stateMaker(strings);
-            stateMaker(strings);
-            //states.appendFirst(newState);
+            newState = stateMaker(strings);
+            states.appendFirst(newState);
         }        
         
     }
     
-    private void stateMaker(String[] strings) {
+    private State stateMaker(String[] strings) {
         State newState;
         SinglyLinkedList<Race> races = new SinglyLinkedList<Race>();
         float[][] stats = new float[firstDeathStat - 1][2];
@@ -70,10 +73,10 @@ public class DataReader {
         }
         
         //Makes the new state
-        //newState = new State(strings[0], races);
+        newState = new State(strings[0], races);
         System.out.println(races.toString());
         
-        //return newState;
+        return newState;
     }
     
     public SinglyLinkedList<State> getStates() {

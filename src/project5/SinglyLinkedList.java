@@ -4,23 +4,51 @@ import java.util.Iterator;
 
 public class SinglyLinkedList<T> implements Iterable<T> {
     private Node<T> head;
+    private int size;
     
     public SinglyLinkedList(Node<T> head) {
         this.head = head;
+        size = 0;
     }
     
     public SinglyLinkedList(T[] arr) {
         for (int i = 0; i < arr.length; i++) {
             this.appendLast(arr[i]);
         }
+        size = 0;
     }
     
     public SinglyLinkedList() {
         head = null;
+        size = 0;
     }
     
     public Node<T> getHead() {
         return head;
+    }
+    
+    public T[] toArray() {
+        T[] arr = (T[]) new Object[size];
+        Node<T> curr = head;
+        
+        for (int i = 0; i < size; i++) {
+            arr[i] = curr.getData();
+            curr = curr.getNextNode();            
+        }
+        
+        return arr;
+    }
+    
+    public void sort() {
+        T[] arr = this.toArray();
+        T smol;
+        T temp;
+        
+        for (int i = 0; i < size; i++) {
+            smol = arr[i];
+            for (int k = i; i < size; k++) {
+            }
+        }
     }
     
     public void setHead(Node<T> newHead) {
@@ -38,6 +66,7 @@ public class SinglyLinkedList<T> implements Iterable<T> {
             curr = curr.getNextNode();
         }
         
+        size++;
         curr.setNextNode(new Node<T>(data));
     }
     
@@ -49,6 +78,7 @@ public class SinglyLinkedList<T> implements Iterable<T> {
             return;
         }
         
+        size++;
         newNode.setNextNode(head);
         head = newNode;
     }
