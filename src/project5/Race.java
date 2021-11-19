@@ -39,4 +39,8 @@ public class Race implements Comparable<Race> {
         
     }
     
+    public String toString() {
+        return "[" + name + ", " + cases + ", " + cfr + "]";
+    }
+    
 }

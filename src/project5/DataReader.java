@@ -20,14 +20,14 @@ public class DataReader {
             readFile(file);
         }
         catch (Exception e) {
-            
+            System.out.println("File oof");
         }
     }
     
     private void readFile(String file) throws FileNotFoundException {
         Scanner scanner = new Scanner(new File(file));
         String[] strings;
-        raceInfo = scanner.next().split(",");
+        raceInfo = scanner.nextLine().split(",");
         State newState;
 
         for (int i = 1; i < raceInfo.length; i++) {
@@ -40,13 +40,14 @@ public class DataReader {
         
         while (scanner.hasNextLine()) {
             strings = scanner.nextLine().split(",");
-            newState = stateMaker(strings);
-            states.appendFirst(newState);
+            //newState = stateMaker(strings);
+            stateMaker(strings);
+            //states.appendFirst(newState);
         }        
         
     }
     
-    private State stateMaker(String[] strings) {
+    private void stateMaker(String[] strings) {
         State newState;
         SinglyLinkedList<Race> races = new SinglyLinkedList<Race>();
         float[][] stats = new float[firstDeathStat - 1][2];
@@ -69,9 +70,10 @@ public class DataReader {
         }
         
         //Makes the new state
-        newState = new State(strings[0], races);
+        //newState = new State(strings[0], races);
+        System.out.println(races.toString());
         
-        return newState;
+        //return newState;
     }
     
     public SinglyLinkedList<State> getStates() {
