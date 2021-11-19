@@ -1,9 +1,9 @@
 package project5;
 
-public class Race {
+public class Race implements Comparable<Race> {
     private String name;
     private float cases;
-    private String cfr;
+    private float cfr;
     
     public Race(String name, float cases, float deaths) {
         this.name = name;
@@ -11,9 +11,8 @@ public class Race {
         cfr = calcCFR(deaths);
     }
     
-    public String calcCFR(float deaths) {
-        float percent = deaths / cases;
-        return percent + "%";
+    private float calcCFR(float deaths) {
+        return deaths / cases;
     }
     
     public String getName() {
@@ -22,6 +21,22 @@ public class Race {
     
     public float getCases() {
         return cases;
+    }
+    
+    public float getCFR() {
+        return cfr;
+    }
+
+    @Override
+    public int compareTo(Race other) {
+        if (cfr > other.getCFR()) {
+            return -1;
+        }
+        if (other.getCFR() > cfr) {
+            return 1;
+        }
+        return 0;
+        
     }
     
 }
