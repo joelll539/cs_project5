@@ -1,5 +1,7 @@
 package project5;
+
 import student.TestCase;
+
 /**
  * 
  * @author Akshath Majumder
@@ -28,7 +30,7 @@ public class NodeTest extends TestCase {
      */
     public void testsetNextNode() {
         nodekkr.setNextNode(nodeaks);
-        assertEquals(nodeaks, "aks");
+        assertEquals(nodekkr.getNextNode(), nodeaks);
     }
 
 
@@ -38,7 +40,7 @@ public class NodeTest extends TestCase {
 
     public void testsetData() {
         nodeaks.setData("ball");
-        assertEquals(nodeaks, "ball");
+        assertEquals(nodeaks.getData(), "ball");
     }
 
 
@@ -47,6 +49,7 @@ public class NodeTest extends TestCase {
      */
     public void testgetData() {
         nodeaks.getData();
+        assertEquals(nodeaks.getData(), "aks");
 
     }
 
@@ -56,7 +59,8 @@ public class NodeTest extends TestCase {
      */
 
     public void testgetData1() {
-        nodebobby.getData("bobby");
+        nodebobby.getData();
+        assertEquals(nodebobby.getData(), "bobby");
     }
 
 
@@ -64,9 +68,18 @@ public class NodeTest extends TestCase {
      * Gets next node
      */
 
-    public void getNextNode() {
+    public void testgetNextNode() {
         nodebobby.setNextNode(nodeaks);
-        assertEquals(nodebobby.getNextNode(nodeaks));
+        assertEquals(nodebobby.getNextNode(), nodeaks);
+    }
+
+
+    /**
+     * gets next node
+     */
+    public void testgetNextNode1() {
+        nodeaks.setNextNode(nodegunhaar);
+        assertEquals(nodeaks.getNextNode(), nodegunhaar);
     }
 
 }
