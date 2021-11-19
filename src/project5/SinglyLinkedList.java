@@ -9,6 +9,12 @@ public class SinglyLinkedList<T> implements Iterable<T> {
         this.head = head;
     }
     
+    public SinglyLinkedList(T[] arr) {
+        for (int i = 0; i < arr.length; i++) {
+            this.appendLast(arr[i]);
+        }
+    }
+    
     public SinglyLinkedList() {
         head = null;
     }
@@ -19,6 +25,31 @@ public class SinglyLinkedList<T> implements Iterable<T> {
     
     public void setHead(Node<T> newHead) {
         head = newHead;
+    }
+    
+    public void appendLast(T data) {
+        Node<T> curr = head;
+        
+        if (head == null) {
+            head = new Node<T>(data);
+        }
+        
+        while (curr.getNextNode() != null) {
+            curr = curr.getNextNode();
+        }
+        
+        curr.setNextNode(new Node<T>(data));
+    }
+    
+    public void appendFirst(T data) {
+        Node<T> newNode = new Node<T>(data);
+        
+        if (head == null) {
+            head = newNode;
+        }
+        
+        newNode.setNextNode(head);
+        head = newNode;
     }
     
     public String toString() {
@@ -49,13 +80,13 @@ public class SinglyLinkedList<T> implements Iterable<T> {
         
         @Override
         public boolean hasNext() {
-            return curr.getNext() != null;
+            return curr.getNextNode() != null;
         }
 
         @Override
         public T next() {
             T data = curr.getData();
-            curr = curr.getNext();
+            curr = curr.getNextNode();
             return data;
         }
         
