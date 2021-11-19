@@ -2,16 +2,16 @@ package project5;
 
 public class Race implements Comparable<Race> {
     private String name;
-    private float cases;
-    private float cfr;
+    private double cases;
+    private double cfr;
     
-    public Race(String name, float cases, float deaths) {
+    public Race(String name, double cases, double deaths) {
         this.name = name;
         this.cases = cases;
         cfr = calcCFR(deaths);
     }
     
-    private float calcCFR(float deaths) {
+    private double calcCFR(double deaths) {
         return deaths / cases;
     }
     
@@ -19,11 +19,11 @@ public class Race implements Comparable<Race> {
         return name;
     }
     
-    public float getCases() {
+    public double getCases() {
         return cases;
     }
     
-    public float getCFR() {
+    public double getCFR() {
         return cfr;
     }
 
