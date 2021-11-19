@@ -7,5 +7,10 @@ package project5;
  *
  */
 public class NodeTest extends student.TestCase {
+    private Node<string> Node;
 
+    public void setUp() {
+        Node = new Node<String>("aks");
+
+    }
 }
