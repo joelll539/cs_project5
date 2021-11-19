@@ -41,4 +41,32 @@ public class NodeTest extends student.TestCase {
         assertEquals(nodeaks, "ball");
     }
 
+
+    /**
+     * Tests the get data method
+     */
+    public void testgetData() {
+        nodeaks.getData("aks");
+
+    }
+
+
+    /**
+     * Tests the get data method again
+     */
+
+    public void testgetData1() {
+        nodebobby.getData("bobby");
+    }
+
+
+    /**
+     * Gets next node
+     */
+
+    public void getNextNode() {
+        nodebobby.setNextNode(nodeaks);
+        assertEquals(nodebobby.getNextNode(nodeaks));
+    }
+
 }
