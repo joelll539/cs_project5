@@ -46,6 +46,7 @@ public class SinglyLinkedList<T> implements Iterable<T> {
         
         if (head == null) {
             head = newNode;
+            return;
         }
         
         newNode.setNextNode(head);
@@ -56,9 +57,18 @@ public class SinglyLinkedList<T> implements Iterable<T> {
         StringBuilder sb = new StringBuilder();
         LinkedListIterator iter = new LinkedListIterator(head);
         sb.append("[");
+        Node<T> curr = head;
         
+        while (curr != null) {
+            sb.append(curr.getData().toString());
+            
+            if (curr.getNextNode() != null) {
+                sb.append(", ");
+            }
+            curr = curr.getNextNode();
+        }
         
-        
+        /**
         while (iter.hasNext()) {
             sb.append(iter.next().toString());
             
@@ -66,6 +76,8 @@ public class SinglyLinkedList<T> implements Iterable<T> {
                 sb.append(", ");
             }
         }
+        
+        */
         sb.append("]");
         return sb.toString();
     }
@@ -80,6 +92,10 @@ public class SinglyLinkedList<T> implements Iterable<T> {
         
         @Override
         public boolean hasNext() {
+            if (curr == null) {
+                return false;
+            }
+            
             return curr.getNextNode() != null;
         }
 
