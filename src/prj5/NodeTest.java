@@ -15,7 +15,6 @@ public class NodeTest extends TestCase {
     private Node<String> nodeaks;
     private Node<String> nodebobby;
     private Node<String> nodekkr;
-    private Node<String> nodegunhaar;
     @SuppressWarnings("unused")
     private Node<String> uselessNode;
 
@@ -36,6 +35,8 @@ public class NodeTest extends TestCase {
     public void testsetNextNode() {
         nodekkr.setNextNode(nodeaks);
         assertEquals(nodekkr.getNextNode(), nodeaks);
+        nodekkr.setNextNode(this.uselessNode);
+        assertEquals(nodekkr.getNextNode(), this.uselessNode);
     }
 
 
@@ -76,15 +77,6 @@ public class NodeTest extends TestCase {
     public void testgetNextNode() {
         nodebobby.setNextNode(nodeaks);
         assertEquals(nodebobby.getNextNode(), nodeaks);
-    }
-
-
-    /**
-     * gets next node
-     */
-    public void testgetNextNode1() {
-        nodeaks.setNextNode(nodegunhaar);
-        assertEquals(nodeaks.getNextNode(), nodegunhaar);
     }
 
 }
