@@ -9,6 +9,7 @@ public class State {
 
     private String name;
     private SinglyLinkedList<Race> races;
+    private SinglyLinkedList<Race> racesCfr;
 
     /**
      * Constructor initializes fields from inputs for class
@@ -22,6 +23,8 @@ public class State {
         name = n;
         races = race;
         sortAlpha();
+        sortCFR();
+        racesCfr = race;
     }
     
     /**
@@ -45,8 +48,18 @@ public class State {
      * @return
      */
     public String toString() {
+        Race[] arr = races.toArray();
+        Race[] arr2 = racesCfr.toArray();
         StringBuilder nameString = new StringBuilder();
-        nameString.append(name);
+        nameString.append(name + "\n");
+        for (int i = 0; i < arr.length; i++) {
+            nameString.append(arr[i].toString() + "\n");
+        }
+        nameString.append("=====\n");
+        for (int j = 0; j < arr2.length; j++) {
+            nameString.append(arr2[j].toString() + "\n");
+        }
+        nameString.append("=====");
         return nameString.toString();        
     }
 

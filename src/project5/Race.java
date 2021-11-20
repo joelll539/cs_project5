@@ -15,10 +15,10 @@ public class Race implements Comparable<Race> {
     
     private double calcCFR(double deaths) {
         if (cases == -1 || deaths == -1) {
-            return -1;
+            return -1.0;
         }
         
-        return deaths / cases;
+        return (deaths / cases) * 100;
     }
     
     public String getName() {
@@ -46,9 +46,8 @@ public class Race implements Comparable<Race> {
     }
     
     public String toString() {
-        DecimalFormat percent = new DecimalFormat("#.#");
-        DecimalFormat asInt = new DecimalFormat("#");
-        return name + ": " + asInt.format(cases) + " cases, " + percent.format(cfr) + "% CFR";
+        DecimalFormat formatter = new DecimalFormat("###.#");
+        return this.getName() + ": " + formatter.format(this.getCases()) + " cases, " + formatter.format(this.getCFR()) + "% CFR";
     }
     
 }

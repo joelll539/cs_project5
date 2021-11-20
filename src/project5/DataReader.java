@@ -46,9 +46,7 @@ public class DataReader {
                 break;
             }
             raceNames.add(raceInfo[i].substring(6));
-        }
-        System.out.println(raceNames.toString());
-        
+        }        
         //Goes through the lines to make string arrays
         while (scanner.hasNextLine()) {
             strings = scanner.nextLine().split(",");
@@ -91,9 +89,7 @@ public class DataReader {
         }
         
         //Makes the new state
-        newState = new State(strings[0], races);
-        System.out.println(races.toString());
-        
+        newState = new State(strings[0], races);        
         return newState;
     }
     
