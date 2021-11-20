@@ -5,6 +5,13 @@ import java.io.FileNotFoundException;
 import java.util.ArrayList;
 import java.util.Scanner;
 
+/**
+ * This reads the data
+ * @author joell
+ * @author akshath
+ * @author tomasg
+ *
+ */
 public class DataReader {
     private ArrayList<State> states;
     private ArrayList<String> raceNames;
@@ -68,7 +75,7 @@ public class DataReader {
         int statPointer = 0;
         int k = 0;
         
-        //Makes an array of the stats
+        //Makes an array of the statistics
         for (int i = 1; i < strings.length; i++) {
             if (i == this.firstDeathStat) {
                 k = 1;
@@ -93,6 +100,11 @@ public class DataReader {
         return newState;
     }
     
+    /**
+     * This gets the states
+     * 
+     * @return the states
+     */
     public ArrayList<State> getStates() {
         return states;
     }

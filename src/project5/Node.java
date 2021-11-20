@@ -7,16 +7,15 @@ package project5;
  * @author Tomas
  * @version 11.17.2021
  *
- * @param <T>
+ * @param <T> is the type
  */
 public class Node<T> {
     private T data;
     private Node<T> a;
 
     /**
-     * 
-     * @param data
-     *            stores the data
+     * This makes a new
+     * @param data stores the data
      */
     public Node(T data) {
         this.data = data;
@@ -41,7 +40,7 @@ public class Node<T> {
 
 
     /**
-     * 
+     * Gets the data
      * @return returns the data
      */
     public T getData() {
@@ -50,7 +49,7 @@ public class Node<T> {
 
 
     /**
-     * 
+     * Gets the next node
      * @return the next node
      */
     public Node<T> getNextNode() {
@@ -59,7 +58,7 @@ public class Node<T> {
 
 
     /**
-     * 
+     * Sets the next node
      * @param nextNode
      *            takes the latest node
      *            and makes it the next node of the stack
@@ -72,7 +71,7 @@ public class Node<T> {
     /**
      * set data
      * 
-     * @param data
+     * @param data is the data
      */
     public void setData(T Data) {
         this.data = Data;

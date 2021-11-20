@@ -1,8 +1,11 @@
 package project5;
 
 /**
+ * This is a state
  * 
  * @author tomasg
+ * @author joell
+ * @author akshath
  *
  */
 public class State {
@@ -27,24 +30,24 @@ public class State {
     }
     
     /**
-     * 
-     * @return
+     * gets the races
+     * @return the races
      */
     public SinglyLinkedList<Race> getRaces() {
         return races;
     }
     
     /**
-     * 
-     * @return
+     * Gets the name
+     * @return the name
      */
     public String getName() {
         return name;
     }
     
     /**
-     * 
-     * @return
+     * Makes a string from the state
+     * @return the string
      */
     public String toString() {
         sortAlpha();
@@ -63,46 +66,12 @@ public class State {
         sb.append("=====" + "\n");
         
         return sb.toString();
-        /**
-        Race[] arr = races.toArray();
-        Race[] arr2 = racesCfr.toArray();
-        StringBuilder nameString = new StringBuilder();
-        nameString.append(name + "\n");
-        for (int i = 0; i < arr.length; i++) {
-            nameString.append(arr[i].toString() + "\n");
-        }
-        nameString.append("=====\n");
-        for (int j = 0; j < arr2.length; j++) {
-            nameString.append(arr2[j].toString() + "\n");
-        }
-        nameString.append("=====");
-        return nameString.toString();        
-        */
     }
 
     /**
      * This sorts the races alphabetically
      */
     public void sortAlpha() {
-        /**
-        Race[] arr = races.toArray();
-        int smol;
-        Race temp;
-
-        for (int i = 0; i < arr.length; i++) {
-            smol = i;
-            for (int k = i; k < arr.length; k++) {
-                if (arr[k].getName().compareTo(
-                    arr[smol].getName()) < 0) {
-                    smol = k;
-                }
-            }
-            temp = arr[i];
-            arr[i] = arr[smol];
-            arr[smol] = temp;
-        }
-        races = new SinglyLinkedList<Race>(arr);
-        */
         Race[] arr = races.toArray();
         int smol;
         Race temp;
@@ -122,6 +91,9 @@ public class State {
         races = new SinglyLinkedList<Race>(arr);
     }
     
+    /**
+     * This sorts by CFR
+     */
     public void sortCFR() {
         races.sort();
     }

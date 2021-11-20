@@ -3,8 +3,11 @@ package project5;
 import student.TestCase;
 
 /**
+ * This tests tests the node class
  * 
  * @author Akshath Majumder
+ * @author tomasg
+ * @author joell
  * @version 11.17.2021
  *
  */

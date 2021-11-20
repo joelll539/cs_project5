@@ -2,18 +2,30 @@ package project5;
 
 import student.TestCase;
 
+/**
+ * This tests the singly linked list class
+ * @author joell
+ * @author akshath
+ * @author tomasg
+ *
+ */
 public class SinglyLinkedListTest extends TestCase {
-
     private SinglyLinkedList<String> list;
     private SinglyLinkedList<Race> raceList;
     private Race testRace;
-
+    
+    /**
+     * This sets up the tests
+     */
     public void setUp() {
         list = new SinglyLinkedList<String>();
         raceList = new SinglyLinkedList<Race>();
         testRace = new Race("Asian", 8273, 981);
     }
 
+    /**
+     * this tests the toArray method
+     */
     public void testToArray() {
         list.appendFirst("a");
         list.appendFirst("c");
@@ -36,6 +48,9 @@ public class SinglyLinkedListTest extends TestCase {
         assertEquals(list.getHead().getData(), "a");
     }
     
+    /**
+     * This tests the appendFirst method
+     */
     public void testAppendFirst() {
         Race someRace = new Race("a", 9f, 2f);
         Race someRace2 = new Race("b", 5f, 2f);
@@ -75,29 +90,29 @@ public class SinglyLinkedListTest extends TestCase {
         assertEquals(testRace, raceList.getHead().getData());
     }
 
-// /**
-// * Test cases for toArray() method
-// */
-// public void testToArray() {
-// // Check for normal behavior
-// list.appendFirst("VA");
-// list.appendFirst("DC");
-//
-// String[] testStringArray = { "DC", "VA" };
-//
-// for (int i = 0; i < testStringArray.length; i++) {
-// assertEquals(testStringArray[i], list.toArray()[i]);
-// }
-//
-// }
-
-// /**
-// * Test cases for setHead() method
-// */
-// public void testSetHead() {
-// Node<Race> testNode = new Node<Race>(testRace);
-// raceList.setHead(testNode);
-// }
+    /**
+     * This also tests the toArray method
+     */
+    public void testToArray2() {
+        // Check for normal behavior
+        list.appendFirst("VA");
+        list.appendFirst("DC");
+       
+        String[] testStringArray = { "DC", "VA" };
+       
+        for (int i = 0; i < testStringArray.length; i++) {
+            assertEquals(testStringArray[i], list.toArray()[i]);
+        }
+    }
+     
+    /**
+     * Test cases for setHead() method
+     */
+    public void testSetHead() {
+        project5.SinglyLinkedList.Node<Race> testNode 
+            = new project5.SinglyLinkedList.Node<Race>(testRace);
+        raceList.setHead(testNode);
+    }
 
 
     /**
@@ -118,13 +133,16 @@ public class SinglyLinkedListTest extends TestCase {
     public void testToString() {
         // Check normal behavior
         raceList.appendFirst(testRace);
-        assertEquals("[[Asian, 8273, 0.1%]]", raceList.toString());
+        System.out.println(raceList.toString());
+        assertEquals("[Asian: 8273 cases, 11.9% CFR]",
+            raceList.toString());
         
         // Check for another added race
         Race testRace2 = new Race("LatinX", 21738, 817);
         raceList.appendLast(testRace2);
         System.out.println(raceList.toString());
-        assertEquals("[[Asian, 8273, 0.1%], [LatinX, 21738, 0%]]", raceList.toString());   
+        assertEquals("[Asian: 8273 cases, 11.9% CFR, "
+            + "LatinX: 21738 cases, 3.8% CFR]", raceList.toString());   
     }
     
     
