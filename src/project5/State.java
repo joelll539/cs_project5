@@ -23,7 +23,6 @@ public class State {
         name = n;
         races = race;
         sortAlpha();
-        sortCFR();
         racesCfr = race;
     }
     
@@ -48,6 +47,23 @@ public class State {
      * @return
      */
     public String toString() {
+        sortAlpha();
+        StringBuilder sb = new StringBuilder();
+        
+        sb.append(name + "\n");
+        for (Race r : races) {
+            sb.append(r.toString() + "\n");
+        }
+        sb.append("=====" + "\n");
+        sortCFR();
+        
+        for (Race r : races) {
+            sb.append(r.toString() + "\n");
+        }
+        sb.append("=====" + "\n");
+        
+        return sb.toString();
+        /**
         Race[] arr = races.toArray();
         Race[] arr2 = racesCfr.toArray();
         StringBuilder nameString = new StringBuilder();
@@ -61,12 +77,32 @@ public class State {
         }
         nameString.append("=====");
         return nameString.toString();        
+        */
     }
 
     /**
      * This sorts the races alphabetically
      */
     public void sortAlpha() {
+        /**
+        Race[] arr = races.toArray();
+        int smol;
+        Race temp;
+
+        for (int i = 0; i < arr.length; i++) {
+            smol = i;
+            for (int k = i; k < arr.length; k++) {
+                if (arr[k].getName().compareTo(
+                    arr[smol].getName()) < 0) {
+                    smol = k;
+                }
+            }
+            temp = arr[i];
+            arr[i] = arr[smol];
+            arr[smol] = temp;
+        }
+        races = new SinglyLinkedList<Race>(arr);
+        */
         Race[] arr = races.toArray();
         int smol;
         Race temp;

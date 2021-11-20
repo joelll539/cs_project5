@@ -70,7 +70,7 @@ public class SinglyLinkedListTest extends TestCase {
         assertEquals(testRace, raceList.getHead().getData());
 
         // Check after new race to last
-        Race testRace2 = new Race("Black", 38347, 0.2374);
+        Race testRace2 = new Race("Black", 38347, 0.2374f);
         raceList.appendLast(testRace2);
         assertEquals(testRace, raceList.getHead().getData());
     }

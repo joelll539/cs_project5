@@ -10,7 +10,7 @@ public class DataReaderTest extends TestCase {
                 "Cases_and_Deaths_by_race_CRDT_Sep2020.csv");
         ArrayList<State> daStates = reader.getStates();
         for (State s : daStates) {
-            System.out.println(s.toString());
+            System.out.print(s.toString());
         }
     }
 }
