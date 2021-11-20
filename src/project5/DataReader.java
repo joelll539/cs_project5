@@ -7,14 +7,18 @@ import java.util.List;
 import java.util.Scanner;
 
 public class DataReader {
-    private SinglyLinkedList<State> states;
+    private ArrayList<State> states;
     private ArrayList<String> raceNames;
     private String[] raceInfo;
     private int firstDeathStat;
     
+    /**
+     * This makes a new data reader
+     * @param file
+     */
     public DataReader(String file) {
         raceNames = new ArrayList<String>();
-        states = new SinglyLinkedList<State>();
+        states = new ArrayList<State>();
         
         try {
             readFile(file);
@@ -24,6 +28,11 @@ public class DataReader {
         }
     }
     
+    /**
+     * This reads the file
+     * @param file is the file name
+     * @throws FileNotFoundException when a file isn't found
+     */
     private void readFile(String file) throws FileNotFoundException {
         Scanner scanner = new Scanner(new File(file));
         String[] strings;
@@ -45,11 +54,16 @@ public class DataReader {
         while (scanner.hasNextLine()) {
             strings = scanner.nextLine().split(",");
             newState = stateMaker(strings);
-            states.appendFirst(newState);
+            states.add(newState);
         }        
         
     }
     
+    /**
+     * This makes a state
+     * @param strings is a bunch of strings
+     * @return a new state
+     */
     private State stateMaker(String[] strings) {
         State newState;
         SinglyLinkedList<Race> races = new SinglyLinkedList<Race>();
@@ -79,7 +93,7 @@ public class DataReader {
         return newState;
     }
     
-    public SinglyLinkedList<State> getStates() {
+    public ArrayList<State> getStates() {
         return states;
     }
 }

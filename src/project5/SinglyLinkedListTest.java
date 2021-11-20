@@ -14,7 +14,28 @@ public class SinglyLinkedListTest extends TestCase {
         testRace = new Race("Asian", 8273, 981);
     }
 
-
+    public void testToArray() {
+        list.appendFirst("a");
+        list.appendFirst("c");
+        list.appendFirst("b");
+        
+        String[] someArr = list.toArray();
+        
+        for (int i = 0; i < someArr.length; i++) {
+            System.out.println(someArr[i].toString());
+        }
+        assertEquals(list.getHead().getData(), "b");
+        
+        list.sort();
+        
+        someArr = list.toArray();
+        
+        for (int i = 0; i < someArr.length; i++) {
+            System.out.println(someArr[i].toString());
+        }
+        assertEquals(list.getHead().getData(), "a");
+    }
+    
     public void testAppendFirst() {
         Race someRace = new Race("asdf", 4f, 2f);
         Race someRace2 = new Race("qwer", 5f, 2f);
@@ -23,12 +44,12 @@ public class SinglyLinkedListTest extends TestCase {
         System.out.println(raceList.toString());
 
         // L
-        DataReader asdf = new DataReader(
-            "Cases_and_Deaths_by_race_RANDOM_NUMBERS.csv");
+        //DataReader asdf = new DataReader(
+        //    "Cases_and_Deaths_by_race_RANDOM_NUMBERS.csv");
 
         list.appendFirst(1 + "");
         list.appendFirst(2 + "");
-        System.out.println(list.toString());
+        //System.out.println(list.toString());
     }
 
 

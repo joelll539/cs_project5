@@ -1,14 +1,22 @@
 package project5;
 
+import java.lang.reflect.Array;
+import java.util.Arrays;
 import java.util.Iterator;
 
-public class SinglyLinkedList<T> implements Iterable<T> {
+/**
+ * This is a linked list
+ * @author joell
+ *
+ * @param <T> is the type
+ */
+public class SinglyLinkedList<T extends Comparable<T>> implements Iterable<T> {
     private Node<T> head;
     private int size;
 
     public SinglyLinkedList(Node<T> head) {
         this.head = head;
-        size = 0;
+        size = 1;
     }
 
 
@@ -16,7 +24,7 @@ public class SinglyLinkedList<T> implements Iterable<T> {
         for (int i = 0; i < arr.length; i++) {
             this.appendLast(arr[i]);
         }
-        size = 0;
+        size = arr.length;
     }
 
 
@@ -30,31 +38,47 @@ public class SinglyLinkedList<T> implements Iterable<T> {
         return head;
     }
 
+    public int getSize() {
+        return size;
+    }
 
-    public Object[] toArray() {
-        Object[] arr = new Object[size];
+    public T[] toArray() {
+        if (size == 0) {
+            return null;
+        }
+        
+        T thing = head.getData();
+        @SuppressWarnings("unchecked")
+        T[] arr = (T[]) Array.newInstance(thing.getClass(), size);
         Node<T> curr = head;
 
         for (int i = 0; i < size; i++) {
             arr[i] = curr.getData();
             curr = curr.getNextNode();
         }
-
+        
         return arr;
     }
 
 
-    @SuppressWarnings("unchecked")
     public void sort() {
-        T[] arr = (T[])this.toArray();
-        T smol;
+        T[] arr = this.toArray();
+        int smol;
         T temp;
 
-        for (int i = 0; i < size; i++) {
-            smol = arr[i];
-            for (int k = i; i < size; k++) {
+        for (int i = 0; i < arr.length; i++) {
+            smol = i;
+            for (int k = i; k < arr.length; k++) {
+                if (arr[k].compareTo(arr[smol]) < 0) {
+                    smol = k;
+                }
             }
+            temp = arr[i];
+            arr[i] = arr[smol];
+            arr[smol] = temp;
         }
+        SinglyLinkedList<T> newList = new SinglyLinkedList<T>(arr);
+        head = newList.getHead();
     }
 
 
@@ -68,6 +92,8 @@ public class SinglyLinkedList<T> implements Iterable<T> {
 
         if (head == null) {
             head = new Node<T>(data);
+            size++;
+            return;
         }
 
         while (curr.getNextNode() != null) {
@@ -84,6 +110,7 @@ public class SinglyLinkedList<T> implements Iterable<T> {
 
         if (head == null) {
             head = newNode;
+            size++;
             return;
         }
 
