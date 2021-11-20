@@ -12,7 +12,6 @@ public class State {
 
     private String name;
     private SinglyLinkedList<Race> races;
-    private SinglyLinkedList<Race> racesCfr;
 
     /**
      * Constructor initializes fields from inputs for class
@@ -26,7 +25,6 @@ public class State {
         name = n;
         races = race;
         sortAlpha();
-        racesCfr = race;
     }
     
     /**
