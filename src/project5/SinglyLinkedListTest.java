@@ -27,6 +27,7 @@ public class SinglyLinkedListTest extends TestCase {
      * this tests the toArray method
      */
     public void testToArray() {
+        assertNull(list.toArray());
         list.appendFirst("a");
         list.appendFirst("c");
         list.appendFirst("b");
@@ -112,6 +113,8 @@ public class SinglyLinkedListTest extends TestCase {
         project5.SinglyLinkedList.Node<Race> testNode 
             = new project5.SinglyLinkedList.Node<Race>(testRace);
         raceList.setHead(testNode);
+        raceList = new SinglyLinkedList<Race>(testNode);
+        assertEquals(raceList.getHead().getData(), testNode.getData());
     }
 
 

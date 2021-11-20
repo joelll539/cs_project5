@@ -108,7 +108,7 @@ public class SinglyLinkedList<T extends
 
     /**
      * This sets a new head
-     * @param newHead
+     * @param newHead is the new head
      */
     public void setHead(Node<T> newHead) {
         head = newHead;
@@ -155,6 +155,7 @@ public class SinglyLinkedList<T extends
 
     /**
      * Makes a string from the list
+     * @return the string
      */
     public String toString() {
         StringBuilder sb = new StringBuilder();
@@ -192,11 +193,7 @@ public class SinglyLinkedList<T extends
          */
         @Override
         public boolean hasNext() {
-            if (curr == null) {
-                return false;
-            }
-
-            return true;
+            return curr != null;
         }
 
         /**
@@ -242,24 +239,7 @@ public class SinglyLinkedList<T extends
             this.data = data;
             a = null;
         }
-
-
-        /**
-         * takes the new entry and
-         * sets it as next node
-         * 
-         * @param entry
-         *            is the new entry being added
-         * @param node
-         *            is the new node
-         */
-
-        public Node(T entry, Node<T> node) {
-            this(entry);
-            this.setNextNode(node);
-        }
-
-
+        
         /**
          * 
          * @return returns the data
@@ -292,10 +272,10 @@ public class SinglyLinkedList<T extends
         /**
          * set data
          * 
-         * @param data
+         * @param data is the data
          */
-        public void setData(T Data) {
-            this.data = Data;
+        public void setData(T data) {
+            this.data = data;
         }
 
     }

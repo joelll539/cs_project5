@@ -73,8 +73,8 @@ public class Node<T> {
      * 
      * @param data is the data
      */
-    public void setData(T Data) {
-        this.data = Data;
+    public void setData(T data) {
+        this.data = data;
     }
 
 }

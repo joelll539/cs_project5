@@ -16,6 +16,8 @@ public class NodeTest extends TestCase {
     private Node<String> nodebobby;
     private Node<String> nodekkr;
     private Node<String> nodegunhaar;
+    @SuppressWarnings("unused")
+    private Node<String> uselessNode;
 
     /**
      * Set up method
@@ -24,7 +26,7 @@ public class NodeTest extends TestCase {
         nodeaks = new Node<String>("aks");
         nodebobby = new Node<String>("bobby");
         nodekkr = new Node<String>("kkr");
-
+        uselessNode = new Node<String>("Sakura", nodekkr);
     }
 
 
