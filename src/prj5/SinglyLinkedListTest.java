@@ -1,4 +1,4 @@
-package project5;
+package prj5;
 
 import student.TestCase;
 
@@ -110,8 +110,8 @@ public class SinglyLinkedListTest extends TestCase {
      * Test cases for setHead() method
      */
     public void testSetHead() {
-        project5.SinglyLinkedList.Node<Race> testNode 
-            = new project5.SinglyLinkedList.Node<Race>(testRace);
+        prj5.SinglyLinkedList.Node<Race> testNode 
+            = new prj5.SinglyLinkedList.Node<Race>(testRace);
         raceList.setHead(testNode);
         raceList = new SinglyLinkedList<Race>(testNode);
         assertEquals(raceList.getHead().getData(), testNode.getData());

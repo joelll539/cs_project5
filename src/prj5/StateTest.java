@@ -1,4 +1,4 @@
-package project5;
+package prj5;
 
 /**
  * This tests the state class
