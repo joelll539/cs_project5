@@ -28,13 +28,17 @@ public class StateTest extends student.TestCase {
      * Test cases for getRaces() method
      */
     public void testGetRaces() {
+        assertEquals(testRace.getName(), 
+            testRaceList.getHead().getData().getName());
         // Check normal behavior
-        assertTrue(testRaceList.toString().equals(testStates.getRaces().toString()));
+        assertTrue(testRaceList.toString().
+            equals(testStates.getRaces().toString()));
         Race testRace2 = new Race("White", 17382, 383);
         
         // Check if appending a second race affects it
         testRaceList.appendLast(testRace2);
-        assertFalse(testRaceList.toString().equals(testStates.getRaces().toString()));
+        assertFalse(testRaceList.toString().
+            equals(testStates.getRaces().toString()));
     }    
     
     /**

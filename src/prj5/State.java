@@ -6,7 +6,7 @@ package prj5;
  * @author tomasg
  * @author joell
  * @author akshath
- *
+ * @version 2021.11.20
  */
 public class State {
 
@@ -16,10 +16,8 @@ public class State {
     /**
      * Constructor initializes fields from inputs for class
      * 
-     * @param n
-     *            name of the state
-     * @param stat
-     *            list for state statistics
+     * @param n name of the state
+     * @param race is the races
      */
     public State(String n, SinglyLinkedList<Race> race) {
         name = n;
