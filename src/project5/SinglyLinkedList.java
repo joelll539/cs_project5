@@ -1,7 +1,6 @@
 package project5;
 
 import java.lang.reflect.Array;
-import java.util.Arrays;
 import java.util.Iterator;
 
 /**
@@ -122,10 +121,7 @@ public class SinglyLinkedList<T extends Comparable<T>> implements Iterable<T> {
 
     public String toString() {
         StringBuilder sb = new StringBuilder();
-        LinkedListIterator iter = new LinkedListIterator(head);
         sb.append("[");
-        Node<T> curr = head;
-
         for (T i : this) {
             sb.append(i.toString());
             sb.append(", ");

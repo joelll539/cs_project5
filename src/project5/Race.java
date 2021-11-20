@@ -1,5 +1,7 @@
 package project5;
 
+import java.text.DecimalFormat;
+
 public class Race implements Comparable<Race> {
     private String name;
     private double cases;
@@ -12,6 +14,10 @@ public class Race implements Comparable<Race> {
     }
     
     private double calcCFR(double deaths) {
+        if (cases == -1 || deaths == -1) {
+            return -1;
+        }
+        
         return deaths / cases;
     }
     
@@ -35,12 +41,14 @@ public class Race implements Comparable<Race> {
         if (other.getCFR() > cfr) {
             return 1;
         }
-        return 0;
+        return name.compareTo(other.getName());
         
     }
     
     public String toString() {
-        return "[" + name + ", " + cases + ", " + cfr + "]";
+        DecimalFormat percent = new DecimalFormat("#.#");
+        DecimalFormat asInt = new DecimalFormat("#");
+        return name + ": " + asInt.format(cases) + " cases, " + percent.format(cfr) + "% CFR";
     }
     
 }

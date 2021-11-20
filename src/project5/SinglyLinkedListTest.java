@@ -37,11 +37,18 @@ public class SinglyLinkedListTest extends TestCase {
     }
     
     public void testAppendFirst() {
-        Race someRace = new Race("asdf", 4f, 2f);
-        Race someRace2 = new Race("qwer", 5f, 2f);
-        raceList.appendFirst(someRace);
+        Race someRace = new Race("a", 9f, 2f);
+        Race someRace2 = new Race("b", 5f, 2f);
+        Race someRace3 = new Race("c", 5f, 2f);
         raceList.appendFirst(someRace2);
-        System.out.println(raceList.toString());
+        raceList.appendFirst(someRace3);
+        raceList.appendFirst(someRace);
+        
+        State someState = new State("DC", raceList);
+        System.out.println(someState.getRaces().toString());
+        
+        someState.sortCFR();
+        System.out.println(someState.getRaces().toString());        
 
         // L
         //DataReader asdf = new DataReader(
@@ -50,6 +57,7 @@ public class SinglyLinkedListTest extends TestCase {
         list.appendFirst(1 + "");
         list.appendFirst(2 + "");
         //System.out.println(list.toString());
+        assertEquals("2", list.getHead().getData());
     }
 
 
@@ -110,13 +118,13 @@ public class SinglyLinkedListTest extends TestCase {
     public void testToString() {
         // Check normal behavior
         raceList.appendFirst(testRace);
-        assertEquals("[[Asian, 8273.0, 0.11857850840082194]]", raceList.toString());
+        assertEquals("[[Asian, 8273, 0.1%]]", raceList.toString());
         
         // Check for another added race
         Race testRace2 = new Race("LatinX", 21738, 817);
         raceList.appendLast(testRace2);
         System.out.println(raceList.toString());
-        assertEquals("[[Asian, 8273.0, 0.11857850840082194], [LatinX, 21738.0, 0.03758395436562701]]", raceList.toString());   
+        assertEquals("[[Asian, 8273, 0.1%], [LatinX, 21738, 0%]]", raceList.toString());   
     }
     
     

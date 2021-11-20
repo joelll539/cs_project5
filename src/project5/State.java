@@ -21,6 +21,7 @@ public class State {
     public State(String n, SinglyLinkedList<Race> race) {
         name = n;
         races = race;
+        sortAlpha();
     }
     
     /**
@@ -49,4 +50,30 @@ public class State {
         return nameString.toString();        
     }
 
+    /**
+     * This sorts the races alphabetically
+     */
+    public void sortAlpha() {
+        Race[] arr = races.toArray();
+        int smol;
+        Race temp;
+
+        for (int i = 0; i < arr.length; i++) {
+            smol = i;
+            for (int k = i; k < arr.length; k++) {
+                if (arr[k].getName().compareTo(
+                    arr[smol].getName()) < 0) {
+                    smol = k;
+                }
+            }
+            temp = arr[i];
+            arr[i] = arr[smol];
+            arr[smol] = temp;
+        }
+        races = new SinglyLinkedList<Race>(arr);
+    }
+    
+    public void sortCFR() {
+        races.sort();
+    }
 }

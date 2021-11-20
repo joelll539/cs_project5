@@ -3,7 +3,6 @@ package project5;
 import java.io.File;
 import java.io.FileNotFoundException;
 import java.util.ArrayList;
-import java.util.List;
 import java.util.Scanner;
 
 public class DataReader {
@@ -76,6 +75,11 @@ public class DataReader {
             if (i == this.firstDeathStat) {
                 k = 1;
                 statPointer = 0;
+            }
+            if (strings[i].equals("NA")) {
+                stats[statPointer][k] = -1f;
+                statPointer++;
+                continue;
             }
             stats[statPointer][k] = Float.parseFloat(strings[i]);
             statPointer++;
