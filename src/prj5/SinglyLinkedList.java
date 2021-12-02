@@ -88,20 +88,21 @@ public class SinglyLinkedList<T extends
      */
     public void sort() {
         T[] arr = this.toArray();
-        int smol;
         T temp;
 
-        for (int i = 0; i < arr.length; i++) {
-            smol = i;
-            for (int k = i; k < arr.length; k++) {
-                if (arr[k].compareTo(arr[smol]) < 0) {
-                    smol = k;
+        for (int i = 1; i < arr.length; i++) {
+            for (int k = i; k > 0; k--) {
+                if (arr[k].compareTo(arr[k - 1]) < 0) {
+                    temp = arr[k - 1];
+                    arr[k - 1] = arr[k];
+                    arr[k] = temp;
+                }
+                else {
+                    k = 0;
                 }
             }
-            temp = arr[i];
-            arr[i] = arr[smol];
-            arr[smol] = temp;
         }
+        
         SinglyLinkedList<T> newList = new SinglyLinkedList<T>(arr);
         setHead(newList.getHead());
     }
