@@ -92,8 +92,8 @@ public class GUICovidWindow {
     
     /**
      * This is supposed to take in a state and draw all the information
-     * it has onto the window, exactly how it is in the project 5 description
-     * on canvas
+     * it has onto the window, exactly how it is shown in the project 5
+     * description on canvas
      * 
      * @param races (change this)
      */
