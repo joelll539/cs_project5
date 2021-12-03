@@ -86,6 +86,13 @@ public class GUICovidWindow {
         
     }
     
+    /**
+     * This is supposed to take in a state and draw all the information
+     * it has onto the window, exactly how it is in the project 5 description
+     * on canvas
+     * 
+     * @param races (change this)
+     */
     public void drawRectangles(SinglyLinkedList<Race> races) {
         window.removeAllShapes();
         int shapeX = 20;
