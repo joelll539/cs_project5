@@ -95,14 +95,15 @@ public class GUICovidWindow {
      * it has onto the window, exactly how it is shown in the project 5
      * description on canvas
      * 
-     * @param races (change this)
+     * 
+     * @param states
      */
-    public void drawRectangles(SinglyLinkedList<Race> races) {
+    public void drawRectangles(State someState) {
         window.removeAllShapes();
         int shapeX = 20;
         int shapeY = 20;
-        Iterator<Race> aks = races.iterator();
-        for (Race curr : races) {
+        Iterator<State> aks = someState.iterator();
+        for (Race curr : someState) {
             int height = (int)curr.getCFR() * 50;
             int width = BAR_WIDTH;
             Shape bar = new Shape(shapeX, shapeY, width, height, Color.BLUE);
