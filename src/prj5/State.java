@@ -22,7 +22,7 @@ public class State {
     public State(String n, SinglyLinkedList<Race> race) {
         name = n;
         races = race;
-        sortAlpha();
+        sortCFR();
     }
     
     /**
