@@ -6,19 +6,27 @@ import cs2.Shape;
 import cs2.TextShape;
 import cs2.Window;
 import cs2.WindowSide;
+import java.util.Iterator;
+import java.awt.color.*;
 
 public class GUICovidWindow {
     private Window window;
 
-    public void drawRectangles() {
-        while( i< races.getLength()) {
-            y += BAR_SPACE_CONSTANT;
-            System.out.println(races.getEntry(i));
-            double height = BAR_HEIGHT_CONSTANT * races.getEntry(i).calcCFR();
-            bar = new Shape(y, 40, BAR_WIDTH_CONSTANT, (int) height, Color.BLUE);
+    public static final int BAR_GAP = 100;
+    public static final int BAR_HEIGHT = 50;
+    public static final int BAR_WIDTH = 50;
+
+    public void drawRectangles(SinglyLinkedList<Race> races) {
+        window.removeAllShapes();
+        int shapeX = 20;
+        int shapeY = 20;
+        Iterator<Race> aks = races.iterator();
+        for (Race curr : races) {
+            int height = (int)curr.getCFR() * 50;
+            int width = BAR_WIDTH;
+            Shape bar = new Shape(shapeX, shapeY, width, height, Color.BLUE);
             window.addShape(bar);
-            String CFR = races.getEntry(i).calcCFR() + "R";
-            text = new TextShape(30, y, CFR, Color.black};
-            window.addShape(text);
-            i++;
+            shapeX += BAR_GAP;
+        }
     }
+}
