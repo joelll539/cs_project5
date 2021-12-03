@@ -37,10 +37,14 @@ public class GUICovidWindow {
     public static final int BAR_HEIGHT = 50;
     public static final int BAR_WIDTH = 50;
 
-    public GUICovidWindow() {
+    /**
+     * This puts all of the stuff in the window
+     * @param reader is where the data comes from
+     */
+    public GUICovidWindow(DataReader reader) {
         currSort = "cfr";
         window = new Window("Covid Visualization");
-        states = new ArrayList<State>();
+        states = reader.getStates();
         stateButtons = new Button[states.size()];
         this.makeButtons();
         
