@@ -83,8 +83,11 @@ public class GUICovidWindow {
             int height = (int)curr.getCFR() * 25;
             int width = BAR_WIDTH;
             int shapeY = 240 - height;
-            Shape bar = new Shape(shapeX, shapeY, width, height, Color.BLUE);
+            Shape bar = new Shape(shapeX + 8, shapeY, width, height, Color.BLUE);
             window.addShape(bar);
+            if (curr.getCFR() == -1) {
+                addText(shapeX + 8, 230, "NA");
+            }
             addText(shapeX, 250, curr.getName());
             addText(shapeX, 270, cfr.format(curr.getCFR()) + "%");
             shapeX += BAR_GAP;
