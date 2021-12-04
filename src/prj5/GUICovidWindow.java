@@ -7,8 +7,6 @@ import cs2.TextShape;
 import cs2.Window;
 import cs2.WindowSide;
 import java.util.ArrayList;
-import java.util.Iterator;
-import java.awt.color.*;
 import java.text.DecimalFormat;
 
 public class GUICovidWindow {
@@ -46,6 +44,7 @@ public class GUICovidWindow {
      */
     public GUICovidWindow(DataReader reader) {
         currSort = "cfr";
+        currState = null;
         window = new Window("Covid Visualization");
         states = reader.getStates();
         stateButtons = new Button[states.size()];
@@ -172,6 +171,10 @@ public class GUICovidWindow {
      *            the button that was clicked
      */
     public void sortAlphabetically(Button alphSort) {
+        if (currState == null) {
+            return;
+        }
+        
         currSort = "alpha";
         window.removeAllShapes();
         currState.sortAlpha();
@@ -186,6 +189,10 @@ public class GUICovidWindow {
      *            the button that was clicked
      */
     public void sortCfr(Button cfrSort) {
+        if (currState == null) {
+            return;
+        }
+        
         currSort = "cfr";
         window.removeAllShapes();
         currState.sortCFR();
