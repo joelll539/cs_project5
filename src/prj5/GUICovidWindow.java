@@ -9,10 +9,14 @@ import cs2.WindowSide;
 import java.util.ArrayList;
 import java.text.DecimalFormat;
 
+/**
+ * This class does the gui stuff for the project
+ * @author Joel Llaury (joell)
+ * @author tomasg
+ * @author akshath
+ * @version 2021.12.03
+ */
 public class GUICovidWindow {
-
-    private DataReader covidList;
-
     private Window window;
     private Button quit;
     private Button alphSort;
@@ -20,27 +24,32 @@ public class GUICovidWindow {
     private State currState;
     private String currSort;
 
-    /**
-     * private Button dc;
-     * private Button ga;
-     * private Button md;
-     * private Button nc;
-     * private Button tn;
-     * private Button va;
-     */
-
     private ArrayList<State> states;
     private Button[] stateButtons;
 
+    /**
+     * This is a shape thing
+     */
     public static final int BAR_GAP = 100;
+    
+    /**
+     * This is another shape thing
+     */
     public static final int BAR_HEIGHT = 50;
+    
+    /**
+     * This is not a shape thing...
+     * 
+     * 
+     * 
+     * jk it's another shape thing
+     */
     public static final int BAR_WIDTH = 30;
 
     /**
      * This puts all of the stuff in the window
      * 
-     * @param reader
-     *            is where the data comes from
+     * @param reader is where the data comes from
      */
     public GUICovidWindow(DataReader reader) {
         currSort = "cfr";
@@ -71,7 +80,7 @@ public class GUICovidWindow {
      * description on canvas
      * 
      * 
-     * @param states
+     * @param someState is the state
      */
     public void drawRectangles(State someState) {
         window.removeAllShapes();
@@ -114,6 +123,10 @@ public class GUICovidWindow {
 
     /**
      * Adds text shape for name and cfr to the bar shape
+     * 
+     * @param x is the x
+     * @param y is the y
+     * @param stateName is the stateName
      */
     private void addText(int x, int y, String stateName) {
         if (stateName != null) {
@@ -127,8 +140,7 @@ public class GUICovidWindow {
     /**
      * Represents the state that was clicked
      * 
-     * @param stateButton
-     *            is the button
+     * @param stateButton is the button
      */
     public void representState(Button stateButton) {
         String stateName = stateButton.getTitle().substring(10);
@@ -156,8 +168,7 @@ public class GUICovidWindow {
     /**
      * This closes the window
      * 
-     * @param quitButton
-     *            the button that was clicked
+     * @param quitButton the button that was clicked
      */
     public void clickedQuit(Button quitButton) {
         System.exit(0);
@@ -167,8 +178,7 @@ public class GUICovidWindow {
     /**
      * This sorts the data alphabetically
      * 
-     * @param alphSort
-     *            the button that was clicked
+     * @param alphSort the button that was clicked
      */
     public void sortAlphabetically(Button alphSort) {
         if (currState == null) {
@@ -185,8 +195,7 @@ public class GUICovidWindow {
     /**
      * Sorts the data based on cfr
      * 
-     * @param cfrSort
-     *            the button that was clicked
+     * @param cfrSort the button that was clicked
      */
     public void sortCfr(Button cfrSort) {
         if (currState == null) {
