@@ -31,6 +31,7 @@ public class StateTest extends student.TestCase {
         assertEquals(testRace.getName(), 
             testRaceList.getHead().getData().getName());
         // Check normal behavior
+        testStates.sortAlpha();
         assertTrue(testRaceList.toString().
             equals(testStates.getRaces().toString()));
         Race testRace2 = new Race("White", 17382, 383);
