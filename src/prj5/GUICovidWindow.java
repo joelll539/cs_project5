@@ -36,7 +36,7 @@ public class GUICovidWindow {
 
     public static final int BAR_GAP = 100;
     public static final int BAR_HEIGHT = 50;
-    public static final int BAR_WIDTH = 50;
+    public static final int BAR_WIDTH = 30;
 
     /**
      * This puts all of the stuff in the window
@@ -55,39 +55,13 @@ public class GUICovidWindow {
         alphSort = new Button("Sort Alphabetically");
         cfrSort = new Button("Sort by CFR");
 
-        /**
-         * dc = new Button("Represent DC");
-         * ga = new Button("Represent GA");
-         * md = new Button("Represent MD");
-         * nc = new Button("Represent NC");
-         * tn = new Button("Represent TN");
-         * va = new Button("Represent VA");
-         */
-
         quit.onClick(this, "clickedQuit");
         alphSort.onClick(this, "sortAlphabetically");
         cfrSort.onClick(this, "sortCfr");
 
-        /**
-         * dc.onClick(this, "representState");
-         * ga.onClick(this, "representState");
-         * md.onClick(this, "representState");
-         * nc.onClick(this, "representState");
-         * tn.onClick(this, "representState");
-         * va.onClick(this, "representState");
-         */
-
-        window.addButton(alphSort, WindowSide.WEST);
+        window.addButton(alphSort, WindowSide.NORTH);
         window.addButton(quit, WindowSide.NORTH);
-        window.addButton(cfrSort, WindowSide.WEST);
-        /**
-         * window.addButton(dc, WindowSide.SOUTH);
-         * window.addButton(ga, WindowSide.SOUTH);
-         * window.addButton(md, WindowSide.SOUTH);
-         * window.addButton(nc, WindowSide.SOUTH);
-         * window.addButton(tn, WindowSide.SOUTH);
-         * window.addButton(va, WindowSide.SOUTH);
-         */
+        window.addButton(cfrSort, WindowSide.NORTH);
 
     }
 
@@ -106,13 +80,13 @@ public class GUICovidWindow {
         int shapeX = (window.getGraphPanelWidth() / 3) - 100;
         DecimalFormat cfr = new DecimalFormat("##.#");
         for (Race curr : aks) {
-            int height = (int)curr.getCFR() * 30;
+            int height = (int)curr.getCFR() * 25;
             int width = BAR_WIDTH;
-            int shapeY = 260 - height;
+            int shapeY = 240 - height;
             Shape bar = new Shape(shapeX, shapeY, width, height, Color.BLUE);
             window.addShape(bar);
-            addText(shapeX, 270, curr.getName());
-            addText(shapeX, 530, cfr.format(curr.getCFR()) + "%");
+            addText(shapeX, 250, curr.getName());
+            addText(shapeX, 270, cfr.format(curr.getCFR()) + "%");
             shapeX += BAR_GAP;
         }
     }
