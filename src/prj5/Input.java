@@ -20,18 +20,23 @@ public class Input {
         if (args.length == 1) {
             DataReader reader = new DataReader(args[0]);
             ArrayList<State> states = reader.getStates();
-            
+            GUICovidWindow wind = new GUICovidWindow(reader);
+            /**
             for (State s : states) {
                 System.out.print(s.toString());
             }
+            */
         }
         else {
             DataReader reader = new DataReader("Cases_and_Deaths_by_race_CRDT_Sep2020.csv");
             ArrayList<State> states = reader.getStates();
+            GUICovidWindow wind = new GUICovidWindow(reader);
             
+            /**
             for (State s : states) {
                 System.out.print(s.toString());
             }
+            */
         }
 
     }
