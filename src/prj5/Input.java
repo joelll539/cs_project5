@@ -19,7 +19,9 @@ public class Input {
     public static void main(String[] args) {
         if (args.length == 1) {
             DataReader reader = new DataReader(args[0]);
+            @SuppressWarnings("unused")
             ArrayList<State> states = reader.getStates();
+            @SuppressWarnings("unused")
             GUICovidWindow wind = new GUICovidWindow(reader);
             /**
             for (State s : states) {
@@ -29,7 +31,9 @@ public class Input {
         }
         else {
             DataReader reader = new DataReader("Cases_and_Deaths_by_race_CRDT_Sep2020.csv");
+            @SuppressWarnings("unused")
             ArrayList<State> states = reader.getStates();
+            @SuppressWarnings("unused")
             GUICovidWindow wind = new GUICovidWindow(reader);
             
             /**
