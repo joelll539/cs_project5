@@ -108,6 +108,9 @@ public class GUICovidWindow {
             int width = BAR_WIDTH;
             Shape bar = new Shape(shapeX, shapeY, width, height, Color.BLUE);
             window.addShape(bar);
+            addText(shapeX, 510, someState.getRaces().getHead().toString());
+            String cfr = String.format("%.2f", curr.getCFR());
+            addText(shapeX, 530, cfr);
             shapeX += BAR_GAP;
         }
     }
@@ -120,6 +123,17 @@ public class GUICovidWindow {
             stateButtons[i] = new Button("Represent " + states.get(i).getName());
             stateButtons[i].onClick(this, "representState");
             window.addButton(stateButtons[i], WindowSide.SOUTH);
+        }
+    }
+    
+    /**
+     * Adds text shape for name and cfr to the bar shape
+     */
+    private void addText(int x, int y, String stateName) {
+        if (stateName != null) {
+            TextShape name = new TextShape(x, y, stateName);
+            name.setBackgroundColor(Color.WHITE);
+            window.addShape(name);
         }
     }
     
