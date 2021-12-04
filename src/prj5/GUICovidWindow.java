@@ -102,8 +102,8 @@ public class GUICovidWindow {
         window.removeAllShapes();
         int shapeX = 20;
         int shapeY = 20;
-        Iterator<State> aks = someState.iterator();
-        for (Race curr : someState) {
+        Iterator<Race> aks = someState.getRaces().iterator();
+        for (Race curr : aks) {
             int height = (int)curr.getCFR() * 50;
             int width = BAR_WIDTH;
             Shape bar = new Shape(shapeX, shapeY, width, height, Color.BLUE);
