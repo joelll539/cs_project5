@@ -9,27 +9,28 @@ import cs2.WindowSide;
 import java.util.ArrayList;
 import java.util.Iterator;
 import java.awt.color.*;
+import java.text.DecimalFormat;
 
 public class GUICovidWindow {
-    
+
     private DataReader covidList;
-    
+
     private Window window;
     private Button quit;
     private Button alphSort;
     private Button cfrSort;
     private State currState;
     private String currSort;
-    
+
     /**
-    private Button dc;
-    private Button ga;
-    private Button md;
-    private Button nc;
-    private Button tn;
-    private Button va;
-    */
-    
+     * private Button dc;
+     * private Button ga;
+     * private Button md;
+     * private Button nc;
+     * private Button tn;
+     * private Button va;
+     */
+
     private ArrayList<State> states;
     private Button[] stateButtons;
 
@@ -39,7 +40,9 @@ public class GUICovidWindow {
 
     /**
      * This puts all of the stuff in the window
-     * @param reader is where the data comes from
+     * 
+     * @param reader
+     *            is where the data comes from
      */
     public GUICovidWindow(DataReader reader) {
         currSort = "cfr";
@@ -47,49 +50,48 @@ public class GUICovidWindow {
         states = reader.getStates();
         stateButtons = new Button[states.size()];
         this.makeButtons();
-        
+
         quit = new Button("Quit");
         alphSort = new Button("Sort Alphabetically");
         cfrSort = new Button("Sort by CFR");
-        
+
         /**
-        dc = new Button("Represent DC");
-        ga = new Button("Represent GA");
-        md = new Button("Represent MD");
-        nc = new Button("Represent NC");
-        tn = new Button("Represent TN");
-        va = new Button("Represent VA");
-        */
-        
+         * dc = new Button("Represent DC");
+         * ga = new Button("Represent GA");
+         * md = new Button("Represent MD");
+         * nc = new Button("Represent NC");
+         * tn = new Button("Represent TN");
+         * va = new Button("Represent VA");
+         */
+
         quit.onClick(this, "clickedQuit");
         alphSort.onClick(this, "sortAlphabetically");
         cfrSort.onClick(this, "sortCfr");
-        
+
         /**
-        dc.onClick(this, "representState");
-        ga.onClick(this, "representState");
-        md.onClick(this, "representState");
-        nc.onClick(this, "representState");
-        tn.onClick(this, "representState");
-        va.onClick(this, "representState");
-        */
-        
-        
-        
+         * dc.onClick(this, "representState");
+         * ga.onClick(this, "representState");
+         * md.onClick(this, "representState");
+         * nc.onClick(this, "representState");
+         * tn.onClick(this, "representState");
+         * va.onClick(this, "representState");
+         */
+
         window.addButton(alphSort, WindowSide.WEST);
         window.addButton(quit, WindowSide.NORTH);
         window.addButton(cfrSort, WindowSide.WEST);
         /**
-        window.addButton(dc, WindowSide.SOUTH);
-        window.addButton(ga, WindowSide.SOUTH);
-        window.addButton(md, WindowSide.SOUTH);
-        window.addButton(nc, WindowSide.SOUTH);
-        window.addButton(tn, WindowSide.SOUTH);
-        window.addButton(va, WindowSide.SOUTH);
-        */
-        
+         * window.addButton(dc, WindowSide.SOUTH);
+         * window.addButton(ga, WindowSide.SOUTH);
+         * window.addButton(md, WindowSide.SOUTH);
+         * window.addButton(nc, WindowSide.SOUTH);
+         * window.addButton(tn, WindowSide.SOUTH);
+         * window.addButton(va, WindowSide.SOUTH);
+         */
+
     }
-    
+
+
     /**
      * This is supposed to take in a state and draw all the information
      * it has onto the window, exactly how it is shown in the project 5
@@ -100,9 +102,9 @@ public class GUICovidWindow {
      */
     public void drawRectangles(State someState) {
         window.removeAllShapes();
-        SinglyLinkedList<Race> aks = someState.getRaces();            
+        SinglyLinkedList<Race> aks = someState.getRaces();
         int shapeX = (window.getGraphPanelWidth() / 3) - 100;
-
+        DecimalFormat cfr = new DecimalFormat("##.#");
         for (Race curr : aks) {
             int height = (int)curr.getCFR() * 30;
             int width = BAR_WIDTH;
@@ -110,23 +112,25 @@ public class GUICovidWindow {
             Shape bar = new Shape(shapeX, shapeY, width, height, Color.BLUE);
             window.addShape(bar);
             addText(shapeX, 270, curr.getName());
-            String cfr = String.format("%.2f", curr.getCFR());
-            addText(shapeX, 530, );
+            addText(shapeX, 530, cfr.format(curr.getCFR()) + "%");
             shapeX += BAR_GAP;
         }
     }
-    
+
+
     /**
      * This makes all the state buttons
      */
     private void makeButtons() {
         for (int i = 0; i < stateButtons.length; i++) {
-            stateButtons[i] = new Button("Represent " + states.get(i).getName());
+            stateButtons[i] = new Button("Represent " + states.get(i)
+                .getName());
             stateButtons[i].onClick(this, "representState");
             window.addButton(stateButtons[i], WindowSide.SOUTH);
         }
     }
-    
+
+
     /**
      * Adds text shape for name and cfr to the bar shape
      */
@@ -137,44 +141,53 @@ public class GUICovidWindow {
             window.addShape(name);
         }
     }
-    
+
+
     /**
      * Represents the state that was clicked
-     * @param stateButton is the button
+     * 
+     * @param stateButton
+     *            is the button
      */
     public void representState(Button stateButton) {
         String stateName = stateButton.getTitle().substring(10);
-        
-        //This gets the correct state
+
+        // This gets the correct state
         for (State s : states) {
             if (s.getName().equals(stateName)) {
                 currState = s;
                 break;
             }
         }
-        
-        //This decides how to sort the information
+
+        // This decides how to sort the information
         if (currSort.equals("alpha")) {
             currState.sortAlpha();
         }
         else {
             currState.sortCFR();
         }
-        
+
         drawRectangles(currState);
     }
-    
+
+
     /**
      * This closes the window
-     * @param quitButton the button that was clicked
+     * 
+     * @param quitButton
+     *            the button that was clicked
      */
     public void clickedQuit(Button quitButton) {
         System.exit(0);
     }
-    
+
+
     /**
      * This sorts the data alphabetically
-     * @param alphSort the button that was clicked
+     * 
+     * @param alphSort
+     *            the button that was clicked
      */
     public void sortAlphabetically(Button alphSort) {
         currSort = "alpha";
@@ -182,10 +195,13 @@ public class GUICovidWindow {
         currState.sortAlpha();
         drawRectangles(currState);
     }
-    
+
+
     /**
      * Sorts the data based on cfr
-     * @param cfrSort the button that was clicked
+     * 
+     * @param cfrSort
+     *            the button that was clicked
      */
     public void sortCfr(Button cfrSort) {
         currSort = "cfr";
@@ -193,5 +209,5 @@ public class GUICovidWindow {
         currState.sortCFR();
         drawRectangles(currState);
     }
-    
+
 }
