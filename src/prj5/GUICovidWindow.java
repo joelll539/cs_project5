@@ -102,7 +102,7 @@ public class GUICovidWindow {
         window.removeAllShapes();
         int shapeX = 20;
         int shapeY = 20;
-        Iterator<Race> aks = someState.getRaces().iterator();
+        SinglyLinkedList<Race> aks = someState.getRaces();
         for (Race curr : aks) {
             int height = (int)curr.getCFR() * 50;
             int width = BAR_WIDTH;
