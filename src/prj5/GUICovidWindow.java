@@ -100,17 +100,18 @@ public class GUICovidWindow {
      */
     public void drawRectangles(State someState) {
         window.removeAllShapes();
-        SinglyLinkedList<Race> aks = someState.getRaces();
+        SinglyLinkedList<Race> aks = someState.getRaces();            
+        int shapeX = (window.getGraphPanelWidth() / 3) - 100;
+
         for (Race curr : aks) {
-            int height = (int)curr.getCFR() * 50;
+            int height = (int)curr.getCFR() * 30;
             int width = BAR_WIDTH;
-            int shapeX = window.getGraphPanelWidth() / 3;
-            int shapeY = 470 - height;
+            int shapeY = 260 - height;
             Shape bar = new Shape(shapeX, shapeY, width, height, Color.BLUE);
             window.addShape(bar);
-            addText(shapeX, 510, someState.getRaces().getHead().toString());
+            addText(shapeX, 270, curr.getName());
             String cfr = String.format("%.2f", curr.getCFR());
-            addText(shapeX, 530, cfr);
+            addText(shapeX, 530, );
             shapeX += BAR_GAP;
         }
     }
